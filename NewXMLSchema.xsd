@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<em:schema xmlns:em ="http://www.w3.org/2001/XMLSchema">
+	<em:element name="CHRIST" type="STUDENTS" />
+    <em:complexType name="STUDENTS">
+      <em:sequence>
+         <em:element name="COMPUTER-SCIENCE" type="cmp" minOccurs="1" maxOccurs="3" />	
+      </em:sequence>
+    </em:complexType>
+    
+    <em:complexType name="cmp">
+      <em:sequence>
+         <em:element name="STUD-NAME" type="em:string" />
+         <em:element name="STUD-UNIVERSITY" type="em:string" />
+         <em:element name="STUD-PHONE" type="CHECK" />
+         <em:element name="STUD-EMAIL" type="emailAddress" />
+      </em:sequence>
+      
+      
+      
+    </em:complexType>
+        
+          
+           
+     <em:simpleType name = "CHECK">
+           <em:restriction base ="em:integer">
+           <em:minInclusive value="10"></em:minInclusive>
+           </em:restriction>
+           </em:simpleType>      
+           
+           
+  <em:simpleType name="emailAddress"> 
+    <em:restriction base="em:string"> 
+      <em:pattern value="[^@]+@[^\.]+\..+"/> 
+    </em:restriction> 
+    </em:simpleType>
+    
+  </em:schema>
+           

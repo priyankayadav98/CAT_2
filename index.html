@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cat-02</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main_container">
+            <h1 class="main_head">GATEWAYS 2022</h1>
+            <div class="form_cont">
+                <form onsubmit="submitFormHandler()" action="./index.html" id="reg-form">
+                    <div class="form_flex">
+                        <div class="left_cont">
+                            <div class="input_field_cont" >
+                                <label>NAME</label>
+                                <input type="text" name="name" PLACEHOLDER ="ENTER NAME" onkeypress="lock(event)" required/>
+                            </div>
+                            <div class="input_field_cont" id="email-cont">
+                                <label>EMAIK</label>
+                                <input type="email" name="email" PLACEHOLDER ="ENTER PHONE" required/>
+                            </div>
+                            <div class="input_field_cont">
+                                <label>BRANCH</label>
+                                <input type="text" name="branch" PLACEHOLDER="ENTER BRANCH" required/>
+                            </div>
+                            <div class="input_field_cont">
+                                <label>ADDRESS</label>
+                                <input type="text" name="address" PLACE HOLDER="ENTER ADDRESS"required/>
+                            </div>
+            
+                            <div class="input_field_cont">
+                                <label>STATE</label>
+                                <input type="text" name="state" PLACEHOLDER="ENTER STATE" required/>
+                            </div>
+                        </div>
+ 
+                        <div  class="right_cont">
+                            <div class="input_field_cont" id="age-cont">
+                                <label>AGE</label>
+                                <input type="text" name="age" PLACEHOLDER = "ENTER AGE"required onkeypress="lock2(event)"/>
+                            </div>
+                            <div class="input_field_cont" id="phone-cont">
+                                <label>PHOENNUMBER</label>
+                                <input type="text" name="phone_number" PLACEHOLDER ="ENTER THE PHONENUM"required onkeypress="lock2(event)"/>
+                            </div>
+                            <div class="input_field_cont">
+                                <label>COLLEGE/UNIVERSITY</label>
+                                <input type="text" name="college" PLACEHOLDER="ENTER COLLEGE/UNIVERSITY"required/>
+                            </div>
+                            <div class="input_field_cont">
+                                <label>USERNAME</label>
+                                <input type="text" name="username" PLACEHOLDER="ENTER USERNAME" required/>
+                            </div>
+                            <div class="input_field_cont" id ="pass-cont">
+                                <label>PASSWORD</label>
+                                <input type="text" name="password" PLACEHOLDER ="ENTER PASWORD" required onkeypress="passwordValidationHandler(event)"/>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_cont">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="document.js"></script>
+    </body>
+</html>
