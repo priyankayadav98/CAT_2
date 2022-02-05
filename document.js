@@ -2,7 +2,14 @@ const state = {
     xmlDoc:null
 }
 
-function lock(ev){
+function lock1(ev){
+    const keys = /[0-9]/
+    if(ev.key.match(keys)){
+        ev.preventDefault()
+    }
+}
+
+function lock2(ev){
     const keys = /[a-zA-Z]/
     const regex = /^[0-9]{10}$/;
     if(ev.key.match(keys) || ev.target.value.match(regex)){
@@ -39,7 +46,7 @@ const phoneNumValidator = value => {
 const passwordValidator = value => {
     if (!value || value == null){return false}
     const cont = document.getElementById("pass-cont")
-    const regex = regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-+_!@#$%^&*.,?]).+$/
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-+_!@#$%^&*.,?]).+$/
     if(regex.test(value)){
       cont.classList.remove("input_error")
       return true
@@ -105,7 +112,7 @@ const loadXml = () => {
         }
     }
 
-    xhttp.open('GET','data.xml',true);
+    xhttp.open('GET','./NewFile.xml',true);
     xhttp.send();
 }
 
@@ -113,20 +120,21 @@ const showTable = (xmlRes) => {
     if(!xmlRes){return;}
     state.xmlDocObj = xmlRes;
     let table;
-    table = `<tr style='background:#36304a;color:#fff;'>
+    table = `<tr style='background:#36304a;color:	 #ffe6e6;'>
         <th>Student name</th>
         <th>Student university</th>
         <th>Student phone</th>
         <th>Student email</th>
         </tr>`;
     const x = xmlRes.getElementsByTagName("COMPUTER-SCIENCE");
+    console.log(xmlRes)
     for(let i=0;i<x.length;i++){
         table += `
         <tr>
-            <td>${xmlRes.getElementsByTagName("STU-NAME")[i].childNodes[0].nodeValue}</td>
-            <td>${xmlRes.getElementsByTagName("STU-UNIVERSITY")[i].childNodes[0].nodeValue}</td>
-            <td>${xmlRes.getElementsByTagName("STU-PHONE")[i].childNodes[0].nodeValue}</td>
-            <td>${xmlRes.getElementsByTagName("STU-EMAIL")[i].childNodes[0].nodeValue}</td>
+            <td>${xmlRes.getElementsByTagName("STUD-NAME")[i].childNodes[0].nodeValue}</td>
+            <td>${xmlRes.getElementsByTagName("STUD-UNIVERSITY")[i].childNodes[0].nodeValue}</td>
+            <td>${xmlRes.getElementsByTagName("STUD-PHONE")[i].childNodes[0].nodeValue}</td>
+            <td>${xmlRes.getElementsByTagName("STUD-EMAIL")[i].childNodes[0].nodeValue}</td>
             
             </tr>
         `;
