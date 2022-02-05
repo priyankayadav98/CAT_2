@@ -123,8 +123,6 @@ const showTable = (xmlRes) => {
     table = `<tr style='background:#36304a;color:	 #ffe6e6;'>
         <th>Student name</th>
         <th>Student university</th>
-        <th>Student phone</th>
-        <th>Student email</th>
         </tr>`;
     const x = xmlRes.getElementsByTagName("COMPUTER-SCIENCE");
     console.log(xmlRes)
@@ -133,10 +131,7 @@ const showTable = (xmlRes) => {
         <tr>
             <td>${xmlRes.getElementsByTagName("STUD-NAME")[i].childNodes[0].nodeValue}</td>
             <td>${xmlRes.getElementsByTagName("STUD-UNIVERSITY")[i].childNodes[0].nodeValue}</td>
-            <td>${xmlRes.getElementsByTagName("STUD-PHONE")[i].childNodes[0].nodeValue}</td>
-            <td>${xmlRes.getElementsByTagName("STUD-EMAIL")[i].childNodes[0].nodeValue}</td>
-            
-            </tr>
+       </tr>
         `;
     }
     document.getElementById("xml-table").innerHTML = table;
