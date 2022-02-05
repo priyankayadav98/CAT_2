@@ -1,11 +1,8 @@
-function lock(ev){
-    const keys = /[0-9]/
-    if(ev.key.match(keys)){
-        ev.preventDefault()
-    }
+const state = {
+    xmlDoc:null
 }
 
-function lock2(ev){
+function lock(ev){
     const keys = /[a-zA-Z]/
     const regex = /^[0-9]{10}$/;
     if(ev.key.match(keys) || ev.target.value.match(regex)){
@@ -94,3 +91,47 @@ const submitFormHandler = () => {
         alert("Form submitted successfully")
     }
 }
+const loadXml = () => {
+    let xhttp;
+    if(window.XMLHttpRequest){
+        xhttp = new XMLHttpRequest();
+    }else{
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xhttp.onreadystatechange = function(){
+        if(xhttp.readyState == 4 && xhttp.status == 200){
+            showTable(xhttp.responseXML)
+        }
+    }
+
+    xhttp.open('GET','data.xml',true);
+    xhttp.send();
+}
+
+const showTable = (xmlRes) => {
+    if(!xmlRes){return;}
+    state.xmlDocObj = xmlRes;
+    let table;
+    table = `<tr style='background:#36304a;color:#fff;'>
+        <th>Student name</th>
+        <th>Student university</th>
+        <th>Student phone</th>
+        <th>Student email</th>
+        </tr>`;
+    const x = xmlRes.getElementsByTagName("COMPUTER-SCIENCE");
+    for(let i=0;i<x.length;i++){
+        table += `
+        <tr>
+            <td>${xmlRes.getElementsByTagName("STU-NAME")[i].childNodes[0].nodeValue}</td>
+            <td>${xmlRes.getElementsByTagName("STU-UNIVERSITY")[i].childNodes[0].nodeValue}</td>
+            <td>${xmlRes.getElementsByTagName("STU-PHONE")[i].childNodes[0].nodeValue}</td>
+            <td>${xmlRes.getElementsByTagName("STU-EMAIL")[i].childNodes[0].nodeValue}</td>
+            
+            </tr>
+        `;
+    }
+    document.getElementById("xml-table").innerHTML = table;
+}
+
+loadXml()
